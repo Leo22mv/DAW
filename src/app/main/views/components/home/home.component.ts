@@ -43,7 +43,7 @@ export class HomeComponent implements OnInit {
 	  console.log('audio is ready')
 
     // setInterval(() => console.log(Tone.now()), 1000);
-    })
+    }) 
 
     // Comienza el transporte de Tone.js
     Tone.Transport.start();
