@@ -8,9 +8,17 @@ import * as Tone from 'tone';
 })
 export class HomeComponent implements OnInit {
 
+  attack: number = 0;
+  decay: number = 0.2;
+  sustain: number = 0.5;
+  release: number = 1;
+
+  volume: number = -6
+
+
   notas: any[] = [
-    ["F3", "F#3", 'G3', 'G#3', 'A3', 'A#3', 'B3', 'C4', 'C#4', 'D4', 'D#4', 'E4'], 
     ["F4", "F#4", 'G4', 'G#4', 'A4', 'A#4', 'B4', 'C5', 'C#5', 'D5', 'D#5', 'E5'], 
+    ["F3", "F#3", 'G3', 'G#3', 'A3', 'A#3', 'B3', 'C4', 'C#4', 'D4', 'D#4', 'E4'], 
   ]
 
   //create a synth and connect it to the main output (your speakers)
@@ -58,14 +66,16 @@ export class HomeComponent implements OnInit {
 
     // Cambia el volumen del synth2 a +4 dB
     // this.synth2.volume.value = +4;
-    this.synth.set({
-      // envelope: {
-        // attack: 0
-      // },
-      oscillator: {
-        type: "sawtooth"
-      }
-    })
+    // this.synth.set({
+    //   // envelope: {
+    //     // attack: 0
+    //   // },
+    //   oscillator: {
+    //     type: "sawtooth"
+    //   }
+    // })
+
+    this.updateEnv();
   }
 
   play(note: any) {
@@ -127,9 +137,24 @@ export class HomeComponent implements OnInit {
           }
         })
         break
-
-
     }
+  }
+
+
+  updateEnv() {
+    this.synth.set({
+      envelope: {
+        attack: this.attack,
+        decay: this.decay,
+        sustain: this.sustain,
+        release: this.release
+      }
+    })
+  }
+
+
+  updateVolume(): void {
+    this.synth.volume.value = this.volume;
   }
 
 }

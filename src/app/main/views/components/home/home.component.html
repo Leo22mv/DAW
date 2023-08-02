@@ -1,4 +1,4 @@
-<!-- <button>Iniciar</button>-->
+<!-- <button>Iniciar</button> -->
 
 <div class="d-flex justify-content-center">
     <div class="dropdown">
@@ -7,12 +7,43 @@
         </button>
         <ul class="dropdown-menu">
           <li><a class="dropdown-item"(click)="changeOsc('sawtooth')">Sawtooth</a></li>
-          <li><a class="dropdown-item"(click)="changeOsc('sine')">Sine</a></li>
-          <li><a class="dropdown-item"(click)="changeOsc('triangle')">Triangle</a></li>
           <li><a class="dropdown-item"(click)="changeOsc('square')">Square</a></li>
+          <li><a class="dropdown-item"(click)="changeOsc('triangle')">Triangle</a></li>
+          <li><a class="dropdown-item"(click)="changeOsc('sine')">Sine</a></li>
         </ul>
     </div>
 </div>
+
+
+<div class="d-flex justify-content-center vol">
+    <label for="customRange1" class="form-label"><b>Volumen:</b></label>
+    <input type="range" class="form-range vol-inp" id="volume-range" min="-60" max="6" step="0.1" [(ngModel)]="volume" (input)="updateVolume()">
+</div>
+
+
+<div class="env">
+    <div class="d-flex justify-content-center">
+        <label for="customRange1" class="form-label">Attack:</label>
+        <input type="range" class="form-range" id="customRange1" min="0" max="1" step="0.01" [(ngModel)]="attack" name="input" (input)="updateEnv()">
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <label for="customRange1" class="form-label">Decay:</label>
+        <input type="range" class="form-range" id="customRange1" min="0" max="1" step="0.01" [(ngModel)]="decay" name="input" (input)="updateEnv()">
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <label for="customRange1" class="form-label">Sustain:</label>
+        <input type="range" class="form-range" id="customRange1" min="0" max="1" step="0.01" [(ngModel)]="sustain" name="input" (input)="updateEnv()">
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <label for="customRange1" class="form-label">Release:</label>
+        <input type="range" class="form-range" id="customRange1" min="0" max="1" step="0.01" [(ngModel)]="release" name="input" (input)="updateEnv()">
+    </div>
+</div>
+
+
 
 <ul class="set ul">
     <li class="white b li" (click)="play(notas[0][0])"></li>

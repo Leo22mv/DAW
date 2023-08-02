@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeModule } from "./main/views/components/home/home.module";
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -14,7 +15,8 @@ import { HomeModule } from "./main/views/components/home/home.module";
     imports: [
         BrowserModule,
         AppRoutingModule,
-        HomeModule
+        HomeModule,
+        FormsModule
     ]
 })
 export class AppModule { }
