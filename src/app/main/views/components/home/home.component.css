@@ -73,7 +73,7 @@ ul li:first-child {
 ul li:last-child {
   border-radius:0 5px 5px 5px
 }
-.dropdown, b, .env, .vol {
+.dropdown, .env, .vol {
   margin-top: 15px;
 }
 input {
@@ -84,4 +84,8 @@ input {
 }
 .vol-inp {
   width: 40%;
+}
+
+b {
+  margin: 10px 0 30px 0;
 }
