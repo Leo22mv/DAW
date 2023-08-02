@@ -58,14 +58,14 @@ export class HomeComponent implements OnInit {
 
     // Cambia el volumen del synth2 a +4 dB
     // this.synth2.volume.value = +4;
-    // this.synth2.set({
-    //   envelope: {
-    //     attack: 0
-    //   },
-    //   oscillator: {
-    //     type: "sine"
-    //   }
-    // })
+    this.synth.set({
+      // envelope: {
+        // attack: 0
+      // },
+      oscillator: {
+        type: "sawtooth"
+      }
+    })
   }
 
   play(note: any) {
