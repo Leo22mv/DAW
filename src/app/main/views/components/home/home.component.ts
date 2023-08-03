@@ -13,7 +13,15 @@ export class HomeComponent implements OnInit {
   sustain: number = 0.5;
   release: number = 1;
 
-  volume: number = -6
+  volume: number = 0
+
+
+  attack2: number = 0;
+  decay2: number = 0.2;
+  sustain2: number = 0.5;
+  release2: number = 1;
+
+  volume2: number = 0
 
 
   notas: any[] = [
@@ -37,6 +45,7 @@ export class HomeComponent implements OnInit {
 
   // Crear un PolySynth para simular un piano
   synth = new Tone.PolySynth(Tone.Synth).toDestination();
+  synth2 = new Tone.PolySynth(Tone.Synth).toDestination();
 
   // Crear un oscilador adicional
   // osc = new Tone.Oscillator({
@@ -76,6 +85,10 @@ export class HomeComponent implements OnInit {
     // })
 
     this.updateEnv();
+    this.updateEnv2();
+
+    this.updateVolume;
+    this.updateVolume2;
   }
 
   play(note: any) {
@@ -83,7 +96,10 @@ export class HomeComponent implements OnInit {
     // this.osc.start();
 
     // //play a middle 'C' for the duration of an 8th note
-    // this.synth2.triggerAttackRelease(note, "16n");
+    console.log(this.volume + ", " + this.synth.volume.value)
+    this.synth2.triggerAttackRelease(note, "16n");
+
+    console.log(this.volume2 + ", " + this.synth2.volume.value)    
     this.synth.triggerAttackRelease(note, "16n");
 
     // Agrega el oscilador adicional al PolySynth
@@ -140,6 +156,46 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  changeOsc2(type: string) {
+    switch (type) {
+      case "sawtooth":
+        this.synth2.set({
+          oscillator: {
+            type: "sawtooth"
+          }
+        })
+        break
+
+
+      case "sine":
+        this.synth2.set({
+          oscillator: {
+            type: "sine"
+          }
+        })
+        break
+
+
+      case "triangle":
+        this.synth2.set({
+          oscillator: {
+            type: "triangle"
+          }
+        })
+        break
+
+
+      case "square":
+        this.synth2.set({
+          oscillator: {
+            type: "square"
+          }
+        })
+        break
+    }
+  }
+
+
 
   updateEnv() {
     this.synth.set({
@@ -152,9 +208,37 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  updateEnv2() {
+    this.synth2.set({
+      envelope: {
+        attack: this.attack2,
+        decay: this.decay2,
+        sustain: this.sustain2,
+        release: this.release2
+      }
+    })
+  }
+
 
   updateVolume(): void {
     this.synth.volume.value = this.volume;
   }
+
+  updateVolume2(): void {
+    this.synth2.volume.value = this.volume2;
+  }
+
+
+  // Función para cerrar el collapse
+  closeCollapse() {
+    const collapseElements = document.querySelectorAll('.collapse.show');
+    
+    if (collapseElements) {
+      collapseElements.forEach((collapse) => {
+        collapse.classList.remove('show');
+      });
+    }
+  }
+  
 
 }
