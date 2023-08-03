@@ -1,47 +1,60 @@
 <!-- <button>Iniciar</button> -->
 
 <div class="d-flex justify-content-center">
-    <div class="dropdown">
-        <button class="btn btn-dark btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Oscilador
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item"(click)="changeOsc('sawtooth')">Sawtooth</a></li>
-          <li><a class="dropdown-item"(click)="changeOsc('square')">Square</a></li>
-          <li><a class="dropdown-item"(click)="changeOsc('triangle')">Triangle</a></li>
-          <li><a class="dropdown-item"(click)="changeOsc('sine')">Sine</a></li>
-        </ul>
+    <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Oscilador 1
+    </button>
+</div>
+
+<div class="collapse" id="collapseExample">
+    <div class="card card-body">
+        <div class="d-flex justify-content-center">
+            <div class="dropdown">
+                <button class="btn btn-dark btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Onda
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item"(click)="changeOsc('sawtooth')">Sawtooth</a></li>
+                  <li><a class="dropdown-item"(click)="changeOsc('square')">Square</a></li>
+                  <li><a class="dropdown-item"(click)="changeOsc('triangle')">Triangle</a></li>
+                  <li><a class="dropdown-item"(click)="changeOsc('sine')">Sine</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        <div class="d-flex justify-content-center vol">
+            <label for="customRange1" class="form-label"><b>Volumen:</b></label>
+            <input type="range" class="form-range vol-inp" id="volume-range" min="-60" max="6" step="0.1" [(ngModel)]="volume" (input)="updateVolume()">
+        </div>
+        
+        
+        <div class="env">
+            <div class="d-flex justify-content-center">
+                <label for="customRange1" class="form-label">Attack:</label>
+                <input type="range" class="form-range" id="customRange1" min="0" max="0.5" step="0.01" [(ngModel)]="attack" name="input" (input)="updateEnv()">
+            </div>
+        
+            <div class="d-flex justify-content-center">
+                <label for="customRange1" class="form-label">Decay:</label>
+                <input type="range" class="form-range" id="customRange1" min="0" max="1" step="0.01" [(ngModel)]="decay" name="input" (input)="updateEnv()">
+            </div>
+        
+            <div class="d-flex justify-content-center">
+                <label for="customRange1" class="form-label">Sustain:</label>
+                <input type="range" class="form-range" id="customRange1" min="0" max="1" step="0.01" [(ngModel)]="sustain" name="input" (input)="updateEnv()">
+            </div>
+        
+            <div class="d-flex justify-content-center">
+                <label for="customRange1" class="form-label">Release:</label>
+                <input type="range" class="form-range" id="customRange1" min="0" max="1" step="0.01" [(ngModel)]="release" name="input" (input)="updateEnv()">
+            </div>
+        </div>
     </div>
 </div>
 
 
-<div class="d-flex justify-content-center vol">
-    <label for="customRange1" class="form-label"><b>Volumen:</b></label>
-    <input type="range" class="form-range vol-inp" id="volume-range" min="-60" max="6" step="0.1" [(ngModel)]="volume" (input)="updateVolume()">
-</div>
 
-
-<div class="env">
-    <div class="d-flex justify-content-center">
-        <label for="customRange1" class="form-label">Attack:</label>
-        <input type="range" class="form-range" id="customRange1" min="0" max="0.5" step="0.01" [(ngModel)]="attack" name="input" (input)="updateEnv()">
-    </div>
-
-    <div class="d-flex justify-content-center">
-        <label for="customRange1" class="form-label">Decay:</label>
-        <input type="range" class="form-range" id="customRange1" min="0" max="1" step="0.01" [(ngModel)]="decay" name="input" (input)="updateEnv()">
-    </div>
-
-    <div class="d-flex justify-content-center">
-        <label for="customRange1" class="form-label">Sustain:</label>
-        <input type="range" class="form-range" id="customRange1" min="0" max="1" step="0.01" [(ngModel)]="sustain" name="input" (input)="updateEnv()">
-    </div>
-
-    <div class="d-flex justify-content-center">
-        <label for="customRange1" class="form-label">Release:</label>
-        <input type="range" class="form-range" id="customRange1" min="0" max="1" step="0.01" [(ngModel)]="release" name="input" (input)="updateEnv()">
-    </div>
-</div>
 
 
 
